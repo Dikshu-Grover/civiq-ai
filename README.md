@@ -106,29 +106,6 @@ The demonstration highlights the end-to-end capabilities of an AI-assisted disas
 
 ---
 
-## Technology Stack
-
-### Frontend
-
-* Next.js 15
-* React
-* TypeScript
-* Tailwind CSS
-* Framer Motion
-* Recharts
-* Google Maps
-
-### Backend
-
-* FastAPI
-* Python
-
-### Artificial Intelligence
-
-* Gemini API
-
----
-
 ## Typical Workflow
 
 1. Open the National Operations Dashboard.
