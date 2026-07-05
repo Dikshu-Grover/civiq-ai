@@ -129,35 +129,6 @@ The demonstration highlights the end-to-end capabilities of an AI-assisted disas
 
 ---
 
-## System Architecture
-
-```
-                           +----------------------+
-                           |      Frontend        |
-                           |  Next.js • React     |
-                           +----------+-----------+
-                                      |
-                                      |
-                         REST API / HTTP Requests
-                                      |
-                    +-----------------+-----------------+
-                    |                                   |
-         +----------v----------+             +----------v----------+
-         |      FastAPI        |             |     Gemini API      |
-         | Business Logic      |<----------->| AI Risk Analysis    |
-         | Simulation Engine   |             | Recommendations     |
-         +----------+----------+             +---------------------+
-                    |
-                    |
-         +----------v----------+
-         | Sample Disaster Data|
-         | Weather             |
-         | Hospitals           |
-         | Shelters            |
-         +---------------------+
-```
----
-
 ## Typical Workflow
 
 1. Open the National Operations Dashboard.
@@ -194,14 +165,6 @@ Potential enhancements include:
 CIVIQ AI is a demonstration platform developed for research, educational, and hackathon purposes.
 
 Certain operational metrics, disaster intelligence, forecasts, emergency resources, and recommendations are generated using AI and representative sample datasets to demonstrate the capabilities of an AI-assisted disaster management system. The platform is **not intended for deployment in live emergency response environments**.
-
----
-
-## Contributing
-
-Contributions are welcome.
-
-If you would like to improve CIVIQ AI, please fork the repository, create a feature branch, and submit a pull request with a clear description of your proposed changes.
 
 ---
 
