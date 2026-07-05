@@ -22,8 +22,19 @@ import {
   TrendingUp,
   Clock
 } from "lucide-react";
+import dynamic from "next/dynamic";
 import CommandMap from "@/components/CommandMap";
 import LiveDemo from "@/components/LiveDemo";
+
+const InteractiveMap = dynamic(() => import("@/components/InteractiveMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex flex-col items-center justify-center text-slate-400 gap-3 border border-slate-800/80 rounded-xl bg-slate-950/40" style={{ minHeight: "500px" }}>
+      <div className="w-8 h-8 border-4 border-t-cyan-500 border-r-transparent border-slate-800 rounded-full animate-spin"></div>
+      <p className="text-sm font-mono tracking-widest text-cyan-500/80 uppercase">Loading Satellite Grid...</p>
+    </div>
+  ),
+});
 
 import { API_BASE_URL } from "@/config/api";
 
@@ -413,30 +424,12 @@ export default function Dashboard() {
               simulationUpdates={simulationUpdates}
             />
           ) : (
-            <div className="w-full h-full relative border border-slate-800/80 rounded-xl overflow-hidden bg-slate-950 flex flex-col">
-              {/* Mock Satellite Imagery Container */}
-              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200')" }}></div>
-              <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
-
-              {/* Grid overlay */}
-              <div className="absolute inset-0 pointer-events-none opacity-[0.06] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]"></div>
-              
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10">
-                <div className="p-3 bg-cyan-950/60 border border-cyan-800/50 rounded-full mb-4">
-                  <MapIcon className="w-8 h-8 text-cyan-400 animate-pulse" />
-                </div>
-                <h3 className="font-mono text-sm font-bold uppercase tracking-wider text-slate-200">Google Satellite Overlay</h3>
-                <p className="text-xs text-slate-400 font-mono max-w-sm mt-2 leading-relaxed">
-                  Enter your Google Maps API Key in `.env` to load live satellite grids. Running local tactical projection vector grid instead.
-                </p>
-                <button
-                  onClick={() => setMapType("vector")}
-                  className="mt-4 px-4 py-2 bg-slate-900 hover:bg-slate-850 text-cyan-400 border border-cyan-900 rounded font-mono text-[10px] uppercase font-bold tracking-widest transition-all"
-                >
-                  Return to Vector Grid
-                </button>
-              </div>
-            </div>
+            <InteractiveMap
+              statesData={states}
+              selectedStateId={selectedStateId}
+              onSelectState={setSelectedStateId}
+              simulationUpdates={simulationUpdates}
+            />
           )}
         </section>
 
