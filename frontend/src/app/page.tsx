@@ -25,7 +25,7 @@ import {
 import CommandMap from "@/components/CommandMap";
 import LiveDemo from "@/components/LiveDemo";
 
-const API_BASE_URL = "http://127.0.0.1:8000";
+import { API_BASE_URL } from "@/config/api";
 
 // Fallback baseline states data to make the app work if the API is offline
 const FALLBACK_STATES = [

@@ -12,10 +12,12 @@ load_dotenv()
 
 app = FastAPI(title="CIVIQ AI API", description="Disaster Command Center API")
 
-# Configure CORS
+frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
+origins = [origin.strip() for origin in frontend_url.split(",") if origin.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
